@@ -27,10 +27,11 @@ uvicorn app.main:app --reload --port 8005
 Requiere una PostgreSQL accesible con las tablas compartidas (`usuarios`,
 `transacciones`) que crea `casino-backend`.
 
-## Entrega (lo que debes implementar)
-1. **Rutas de salud** para Kubernetes (ver el `TODO` en `app/main.py`):
-   *liveness* (¿el proceso vive?) y *readiness* (¿listo para tráfico? verifica la BD, responde 200/503).
-2. **Dockerfile** para contenerizar el servicio.
-3. **Workflow de CI/CD** (GitHub Actions) que construya la imagen, la publique en ECR y despliegue en **EKS**.
-4. **Manifiestos de Kubernetes** (Deployment + Service) con las probes apuntando a tus rutas de salud.
-5. **Pruebas de carga** que evidencien el correcto funcionamiento en EKS (escalado, disponibilidad).
+## Despliegue en AWS EKS (Kubernetes) - EA3
+Este servicio ha sido desplegado exitosamente en AWS EKS como parte de la Experiencia de Aprendizaje 3.
+
+- **Rutas de salud**: Implementadas (`/health/liveness` y `/health/readiness`).
+- **Docker**: Contenerizado mediante `Dockerfile` y alojado en **Amazon ECR**.
+- **CI/CD**: Workflow de GitHub Actions configurado para construir y desplegar automáticamente en EKS.
+- **Kubernetes**: Manifiestos de `Deployment`, `Service` y `HorizontalPodAutoscaler` aplicados.
+- **Pruebas de Carga**: Validado mediante Locust con escalado automático (HPA) funcionando correctamente.
